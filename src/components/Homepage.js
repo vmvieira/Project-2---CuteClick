@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog, faCat } from "@fortawesome/free-solid-svg-icons";
 
 import MenuBar from "./MenuBar";
-import TestingComponent from "./TestingComponent";
 
 const Homepage = () => {
   return (
@@ -50,7 +49,6 @@ const Homepage = () => {
             </Button>
           </Link>
         </Jumbotron>
-        <TestingComponent />
       </Container>
     </div>
   );
