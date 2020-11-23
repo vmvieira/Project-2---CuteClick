@@ -1,13 +1,13 @@
 import React from "react";
 import MenuBar from "./MenuBar";
 
-const AnimalQuiz = () => {
+const RandomDog = () => {
   return (
     <div>
       <MenuBar />
-      Quiz Page
+      Dog Page
     </div>
   );
 };
 
-export default AnimalQuiz;
+export default RandomDog;
