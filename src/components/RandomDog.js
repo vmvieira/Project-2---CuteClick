@@ -9,7 +9,7 @@ import MenuBar from "./MenuBar";
 const RandomDog = () => {
   const [pics, setPics] = useState({
     alt_description: "",
-    urls: { regular: "" },
+    urls: { small: "" },
   });
 
   function handleClick() {
@@ -30,12 +30,12 @@ const RandomDog = () => {
       <Container>
         <Jumbotron fluid className="my-1 bg-white text-primary rounded">
           <h1 className="text-center">
-            <FontAwesomeIcon icon={faDog} size="xl" color="dodgerblue" />
+            <FontAwesomeIcon icon={faDog} size="1x" color="dodgerblue" />
             <span className="mx-2"></span>
             Having what for cuteness today ?<span className="mx-2"></span>
             <FontAwesomeIcon
               icon={faDog}
-              size="xl"
+              size="1x"
               color="dodgerblue"
               flip="horizontal"
             />
@@ -54,7 +54,7 @@ const RandomDog = () => {
 
         <img
           className="img-fluid rounded mx-auto d-block"
-          src={pics.urls.regular}
+          src={pics.urls.small}
           alt={pics.alt_description}
         />
 

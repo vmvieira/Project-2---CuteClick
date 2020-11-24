@@ -7,29 +7,46 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 import MenuBar from "./MenuBar";
 
 const RandomCat = (props) => {
-  const [pics, setPics] = useState([{}]);
+  const [pics, setPics] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
+  const [randomIndex, setRandomIndex] = useState(
+    Math.floor(Math.random() * 30)
+  );
+
+  function handleClick() {
+    if (pics.length === 0) {
       try {
         const unsplash = new Unsplash({
           accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
         });
-        await unsplash.photos
+        unsplash.photos
           .getRandomPhoto({ query: "cat", count: 30 })
           .then(toJson)
           .then((json) => {
-            setPics(json);
+            setPics([...json]);
+            console.log(json);
           });
       } catch (err) {
         console.error(err);
       }
+    } else {
+      setRandomIndex(Math.floor(Math.random() * 30));
     }
-    fetchData();
-  }, [props]);
+  }
 
-  console.log(pics);
-  // function handleClick() {}
+  function renderImage() {
+    console.log(pics);
+    if (pics.length > 0) {
+      console.log(randomIndex);
+      return (
+        <img
+          className="img-fluid rounded mx-auto d-block"
+          src={pics[randomIndex].urls.regular}
+          alt="a cat"
+        />
+      );
+    }
+  }
 
   return (
     <div>
@@ -50,7 +67,7 @@ const RandomCat = (props) => {
         </Jumbotron>
 
         <Button
-          // onClick={handleClick}
+          onClick={handleClick}
           className="my-4"
           variant="outline-primary"
           size="lg"
@@ -59,11 +76,7 @@ const RandomCat = (props) => {
           <strong>A single cat will do...</strong>
         </Button>
 
-        {/* <img
-          className="img-fluid rounded mx-auto d-block"
-          src={pics[Math.floor(Math.random() * 30)].urls.regular}
-          alt="a cat"
-        /> */}
+        {renderImage()}
 
         <Button className="my-4" variant="outline-primary" size="lg" block>
           <strong>I want cats for days!</strong>

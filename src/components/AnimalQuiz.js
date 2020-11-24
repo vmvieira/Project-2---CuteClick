@@ -22,7 +22,10 @@ const AnimalQuiz = () => {
   }
 
   function handleChange(event) {
-    setQuizState({ [event.currentTarget.name]: event.currentTarget.value });
+    setQuizState({
+      ...quizState,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
   }
 
   console.log(quizState);
@@ -63,6 +66,7 @@ const AnimalQuiz = () => {
               type="radio"
               value="Yes"
               name="question2"
+              checked={quizState.question2 === "Yes"}
               onChange={handleChange}
             />
 
@@ -71,6 +75,7 @@ const AnimalQuiz = () => {
               type="radio"
               value="No"
               name="question2"
+              checked={quizState.question2 === "No"}
               onChange={handleChange}
             />
           </div>
