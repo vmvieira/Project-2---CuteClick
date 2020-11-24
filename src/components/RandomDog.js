@@ -12,7 +12,7 @@ const RandomDog = () => {
     urls: { regular: "" },
   });
 
-  function handleClick(event) {
+  function handleClick() {
     const unsplash = new Unsplash({
       accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
     });
@@ -23,7 +23,7 @@ const RandomDog = () => {
         setPics(json);
       });
   }
-
+  console.log(pics);
   return (
     <div>
       <MenuBar />

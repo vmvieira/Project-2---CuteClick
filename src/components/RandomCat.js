@@ -6,23 +6,30 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 
 import MenuBar from "./MenuBar";
 
-const RandomCat = () => {
-  const [pics, setPics] = useState({
-    alt_description: "",
-    urls: { regular: "" },
-  });
+const RandomCat = (props) => {
+  const [pics, setPics] = useState([{}]);
 
-  function handleClick(event) {
-    const unsplash = new Unsplash({
-      accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
-    });
-    unsplash.photos
-      .getRandomPhoto({ query: "cat" })
-      .then(toJson)
-      .then((json) => {
-        setPics(json);
-      });
-  }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const unsplash = new Unsplash({
+          accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
+        });
+        await unsplash.photos
+          .getRandomPhoto({ query: "cat", count: 30 })
+          .then(toJson)
+          .then((json) => {
+            setPics(json);
+          });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    fetchData();
+  }, [props]);
+
+  console.log(pics);
+  // function handleClick() {}
 
   return (
     <div>
@@ -43,7 +50,7 @@ const RandomCat = () => {
         </Jumbotron>
 
         <Button
-          onClick={handleClick}
+          // onClick={handleClick}
           className="my-4"
           variant="outline-primary"
           size="lg"
@@ -52,11 +59,11 @@ const RandomCat = () => {
           <strong>A single cat will do...</strong>
         </Button>
 
-        <img
+        {/* <img
           className="img-fluid rounded mx-auto d-block"
-          src={pics.urls.regular}
-          alt={pics.alt_description}
-        />
+          src={pics[Math.floor(Math.random() * 30)].urls.regular}
+          alt="a cat"
+        /> */}
 
         <Button className="my-4" variant="outline-primary" size="lg" block>
           <strong>I want cats for days!</strong>
