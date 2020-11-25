@@ -7,6 +7,7 @@ import Homepage from "./components/Homepage";
 import AnimalQuiz from "./components/AnimalQuiz";
 import RandomCat from "./components/RandomCat";
 import RandomDog from "./components/RandomDog";
+import About from "./components/About";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route exact path="/random-cat" component={RandomCat} />
         <Route exact path="/random-dog" component={RandomDog} />
         <Route exact path="/quiz" component={AnimalQuiz} />
+        <Route exact path="/about" component={About} />
       </Switch>
     </BrowserRouter>
   );

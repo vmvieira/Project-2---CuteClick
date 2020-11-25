@@ -10,7 +10,7 @@ const Homepage = () => {
   return (
     <div>
       <MenuBar />
-      <Container>
+      <Container className="mt-3">
         <Jumbotron fluid className="my-5 bg-primary text-white rounded">
           <h1 className="text-center">Choose your cuteness!</h1>
         </Jumbotron>
@@ -41,10 +41,13 @@ const Homepage = () => {
             </Card.Body>
           </Card>
         </CardDeck>
-        <Jumbotron fluid className="my-5 bg-white text-primary rounded">
-          <h1 className="text-center">Which breed are you?</h1>
+        <Jumbotron
+          fluid
+          className="my-3 bg-white text-primary rounded text-center"
+        >
+          <h1 className="text-center">Which animal are you?</h1>
           <Link to="/quiz">
-            <Button variant="outline-primary" size="lg" block>
+            <Button className="my-4" variant="outline-primary" size="lg">
               Take our Quiz!
             </Button>
           </Link>

@@ -1,0 +1,11 @@
+body {
+  padding-top: 4rem;
+}
+
+@media only screen and (min-width: 1030px) {
+  .exampleCover {
+    width: 30vw !important;
+    height: 30vw !important;
+    object-fit: cover !important;
+  }
+}

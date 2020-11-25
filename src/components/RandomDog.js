@@ -7,23 +7,79 @@ import { faDog } from "@fortawesome/free-solid-svg-icons";
 import MenuBar from "./MenuBar";
 
 const RandomDog = () => {
-  const [pics, setPics] = useState({
-    alt_description: "",
-    urls: { small: "" },
-  });
+  const [pics, setPics] = useState([]);
 
-  function handleClick() {
-    const unsplash = new Unsplash({
-      accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
-    });
-    unsplash.photos
-      .getRandomPhoto({ query: "dog" })
-      .then(toJson)
-      .then((json) => {
-        setPics(json);
-      });
+  const [pics2, setPics2] = useState([]);
+
+  const [randomIndex, setRandomIndex] = useState(
+    Math.floor(Math.random() * 30)
+  );
+
+  function handleClick1() {
+    if (pics.length === 0) {
+      try {
+        const unsplash = new Unsplash({
+          accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
+        });
+        unsplash.photos
+          .getRandomPhoto({ query: "dog", count: 30 })
+          .then(toJson)
+          .then((json) => {
+            setPics([...json]);
+          });
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      setRandomIndex(Math.floor(Math.random() * 30));
+    }
   }
-  console.log(pics);
+
+  function handleClick2() {
+    if (pics2.length === 0 || pics.length === 30) {
+      try {
+        const unsplash = new Unsplash({
+          accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
+        });
+        unsplash.photos
+          .getRandomPhoto({ query: "dog", count: 30 })
+          .then(toJson)
+          .then((json) => {
+            setPics2([...json]);
+          });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }
+
+  function renderImage() {
+    if (pics.length > 0) {
+      return (
+        <img
+          className="img-fluid exampleCover rounded mx-auto d-block"
+          src={pics[randomIndex].urls.regular}
+          alt="a dog"
+        />
+      );
+    }
+  }
+
+  function renderMultipleImages() {
+    if (pics2.length > 0) {
+      return (
+        <div className="row">
+          {pics2.map((pic) => (
+            <figure key={pic.id} className="col-md-4">
+              <img src={pic.urls.small} className="img-fluid rounded" />
+            </figure>
+          ))}
+          ;
+        </div>
+      );
+    }
+  }
+
   return (
     <div>
       <MenuBar />
@@ -43,8 +99,8 @@ const RandomDog = () => {
         </Jumbotron>
 
         <Button
-          onClick={handleClick}
-          className="my-4"
+          onClick={handleClick1}
+          className="mb-4"
           variant="outline-primary"
           size="lg"
           block
@@ -52,15 +108,19 @@ const RandomDog = () => {
           <strong>A single dog will do...</strong>
         </Button>
 
-        <img
-          className="img-fluid rounded mx-auto d-block"
-          src={pics.urls.small}
-          alt={pics.alt_description}
-        />
+        {renderImage()}
 
-        <Button className="my-4" variant="outline-primary" size="lg" block>
+        <Button
+          onClick={handleClick2}
+          className="my-4"
+          variant="outline-primary"
+          size="lg"
+          block
+        >
           <strong>I want dogs for days!</strong>
         </Button>
+
+        {renderMultipleImages()}
       </Container>
     </div>
   );
