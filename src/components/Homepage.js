@@ -12,7 +12,7 @@ const Homepage = () => {
       <MenuBar />
       <Container className="mt-3">
         <Jumbotron fluid className="my-5 bg-primary text-white rounded">
-          <h1 className="text-center">Choose your cuteness!</h1>
+          <h1 className="text-center">Choose your cuteness !</h1>
         </Jumbotron>
         <CardDeck className="text-center ">
           <Card className="border-primary">
@@ -21,7 +21,7 @@ const Homepage = () => {
                 <FontAwesomeIcon icon={faCat} size="5x" color="dodgerblue" />
               </Card.Title>
               <Link to="/random-cat">
-                <Button variant="outline-primary">Meow!</Button>
+                <Button variant="outline-primary">Meow !</Button>
               </Link>
             </Card.Body>
           </Card>
@@ -36,7 +36,7 @@ const Homepage = () => {
                 />
               </Card.Title>
               <Link to="/random-dog">
-                <Button variant="outline-primary"> Bark!</Button>
+                <Button variant="outline-primary"> Bark !</Button>
               </Link>
             </Card.Body>
           </Card>
@@ -45,10 +45,10 @@ const Homepage = () => {
           fluid
           className="my-3 bg-white text-primary rounded text-center"
         >
-          <h1 className="text-center">Which animal are you?</h1>
+          <h1 className="text-center">Which animal are you ?</h1>
           <Link to="/quiz">
             <Button className="my-4" variant="outline-primary" size="lg">
-              Take our Quiz!
+              Take our Quiz !
             </Button>
           </Link>
         </Jumbotron>

@@ -36,7 +36,7 @@ const RandomCat = () => {
   }
 
   function handleClick2() {
-    if (pics2.length === 0 || pics.length === 30) {
+    if (pics2.length === 0 || pics2.length === 30) {
       try {
         const unsplash = new Unsplash({
           accessKey: "SkcKMOTBL9jchiPGye03WEAsrnd0SdU7K9OBk9w6zjs",
@@ -117,7 +117,7 @@ const RandomCat = () => {
           size="lg"
           block
         >
-          <strong>I want cats for days!</strong>
+          <strong>I want cats for days !</strong>
         </Button>
 
         {renderMultipleImages()}
