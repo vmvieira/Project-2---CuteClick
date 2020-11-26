@@ -71,7 +71,11 @@ const RandomDog = () => {
         <div className="row">
           {pics2.map((pic) => (
             <figure key={pic.id} className="col-md-4">
-              <img src={pic.urls.small} className="img-fluid rounded" />
+              <img
+                src={pic.urls.small}
+                alt="an animal"
+                className="img-fluid rounded"
+              />
             </figure>
           ))}
           ;
