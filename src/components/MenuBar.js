@@ -4,7 +4,7 @@ import { Navbar, Nav } from "react-bootstrap";
 const MenuBar = () => {
   return (
     <Navbar fixed="top" bg="primary" expand="lg" className="px-5 navbar-dark">
-      <Navbar.Brand href="/">Our Website Title</Navbar.Brand>
+      <Navbar.Brand href="/">CuteClick</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto">

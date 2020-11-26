@@ -2,6 +2,11 @@ body {
   padding-top: 4rem;
 }
 
+.svg-css {
+  height: 50px;
+  width: 50px;
+}
+
 @media only screen and (min-width: 1030px) {
   .exampleCover {
     width: 30vw !important;

@@ -100,9 +100,6 @@ const AnimalQuiz = () => {
     });
   }
 
-  console.log(quizState);
-  console.log(pics);
-
   return (
     <div>
       <MenuBar />
